@@ -5,3 +5,9 @@
 ~~~
 $ docker-compose up --build
 ~~~
+
+Чтобы сделать яблоко гнилым, выполните команду:
+~~~
+$ php yii apple/set-rotten [appleId]
+~~~
+.

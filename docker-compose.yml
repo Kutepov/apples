@@ -1,0 +1,58 @@
+version: '3.2'
+
+services:
+
+  frontend:
+    build: frontend
+    ports:
+      - 20080:80
+    volumes:
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+      - ./:/app
+    networks:
+      - internal
+
+  backend:
+    build: backend
+    ports:
+      - 21080:80
+    volumes:
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+      - ./:/app
+    networks:
+      - internal
+
+  php-console:
+    build:
+      dockerfile: Dockerfile
+      context: ./
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - 9001:9001
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - internal
+
+  mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=apple
+      - MYSQL_USER=apple
+      - MYSQL_PASSWORD=password
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 3s
+      retries: 20
+    networks:
+      - internal
+networks:
+  internal:
+    driver: bridge
+    ipam:
+      driver: default

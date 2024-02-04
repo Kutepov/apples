@@ -10,4 +10,3 @@ $ docker-compose up --build
 ~~~
 $ php yii apple/set-rotten [appleId]
 ~~~
-.

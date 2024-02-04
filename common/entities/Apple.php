@@ -98,4 +98,20 @@ class Apple extends AppleRecord
         $this->fell_at = time();
         $this->status = self::STATUS_FELL;
     }
+
+    public function fields(): array
+    {
+        return [
+            'id',
+            'status' => function () {
+                return self::STATUSES_VALUES[$this->status];
+            },
+            'color' => function () {
+                return self::COLORS_VALUES[$this->color];
+            },
+            'size' => function () {
+                return round($this->size, 2);
+            },
+        ];
+    }
 }

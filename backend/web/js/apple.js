@@ -28,6 +28,20 @@ var Apple = function () {
             }
         });
     };
+
+    this.create = function (count) {
+        $.ajax({
+            'url': '/apple/create',
+            'method': 'get',
+            'data': {'count': count},
+            'success': function (data) {
+                successResult('Яблоки созданы!');
+            },
+            'error': function (data) {
+                toastr.error(data.responseJSON.message);
+            }
+        });
+    };
 };
 
 var apple = new Apple();

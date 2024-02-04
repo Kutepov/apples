@@ -13,6 +13,24 @@ use yii\helpers\Html;
 $this->title = Yii::$app->name;
 AppleAsset::register($this);
 
+echo Html::label('Создать');
+echo Html::input(
+    'number',
+    'eat-part',
+    '',
+    [
+        'class' => 'form-control input-create-apple'
+    ],
+);
+echo Html::label('яблок');
+echo Html::button(
+    'Создать',
+    [
+        'class' => 'btn btn-success btn-eat-apple',
+        'onclick' => 'apple.create($(".input-create-apple").val())'
+    ]
+);
+
 Pjax::begin(['id' => 'apples']);
 echo GridView::widget([
     'dataProvider' => $dataProvider,

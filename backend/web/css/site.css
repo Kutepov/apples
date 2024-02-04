@@ -102,3 +102,9 @@ a.desc:after {
 .btn-eat-apple {
     margin-left: 10px;
 }
+
+.input-create-apple {
+    display: inline;
+    width: 80px;
+    margin: 0 10px 20px 10px;
+}

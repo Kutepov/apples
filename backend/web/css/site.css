@@ -88,3 +88,17 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.btn-fall-apple {
+    margin-right: 20px;
+}
+
+.input-eat-apple {
+    display: inline;
+    width: 80px;
+    margin: 0 10px 0 10px;
+}
+
+.btn-eat-apple {
+    margin-left: 10px;
+}

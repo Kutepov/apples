@@ -99,6 +99,16 @@ class Apple extends AppleRecord
         $this->status = self::STATUS_FELL;
     }
 
+    public function canEat(): bool
+    {
+        return $this->getState() === self::STATUS_FELL;
+    }
+
+    public function canFallToGround(): bool
+    {
+        return $this->getState() === self::STATUS_ON_TREE;
+    }
+
     public function fields(): array
     {
         return [

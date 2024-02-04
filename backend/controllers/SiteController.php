@@ -57,7 +57,14 @@ class SiteController extends Controller
      */
     public function actionIndex(): string
     {
-        return $this->render('index');
+        $dataProvider = new ActiveDataProvider([
+            'query' => Apple::find(),
+            'sort' => [
+                'defaultOrder' => ['id' => SORT_DESC],
+            ],
+
+        ]);
+        return $this->render('index', compact('dataProvider'));
     }
 
     /**
